@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function validateName(id,errid){
+      var name=document.getElementById(id).value;
+      var reg=/\d/;
+      if(reg.test(name)){
+        document.getElementById(errid).innerHTML="Name should not contain digits !!";
+        return false;
+      }else{
+        document.getElementById(errid).innerHTML="";
+        return true;
+      }
+
+    }
+    function validatePhone(id,errid){
+      var phone=document.getElementById(id).value;
+      if(phone.length!=10){
+        document.getElementById(errid).innerHTML="phone no. must contain  10 digits only !!";
+        return false;
+      }else{
+        document.getElementById(errid).innerHTML="";
+        return true;
+      }
+
+    }
+    function validateData(){
+      var flag1=validateName("name","errName");
+      var flag2=validatePhone("phone","errPhone");
+      return flag1 && flag2;
+
+    }
+  </script>
+</head>
+<body>
+  <form action="insert" method="post" onsubmit="return validateData()">
+   NAME:<input type="text" name="name" id="name" required><br>
+   PHONE:<input type="text" name="phone" id="phone" required><br>
+   BRANCH:<input type="text" name="branch" id="branch" required><br>
+   <input type="submit" value="submit" name="sub" id="sub"><br>
+   <span id="errName"></span>
+   <span id="errPhone"></span>
+  </form>
+</body>
+</html>
